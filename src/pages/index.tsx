@@ -1,7 +1,3 @@
-import { Box, Container } from '@chakra-ui/react'
-import { PrismaClient } from '@prisma/client'
-import axios from 'axios'
-import type { NextPage } from 'next'
 import { useEffect } from 'react'
 import Product from '../components/Product'
 import { useAppDispatch, useAppSelector } from '../hooks/reduxhooks'
