@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxhooks'
 
@@ -8,7 +9,7 @@ import { clickCategory } from '../../store/slices/categoryslice'
 const Category = ({ id, name, icon }: Category) => {
   const dispatch = useAppDispatch()
   const { selectedCategory } = useAppSelector((state) => state.category)
-
+  const router = useRouter()
   return (
     <div
       className={`${
@@ -24,7 +25,10 @@ const Category = ({ id, name, icon }: Category) => {
       <button
         type='button'
         className='text-2xl font-bold hover:cursor-pointer'
-        onClick={() => dispatch(clickCategory(id))}
+        onClick={() => {
+          dispatch(clickCategory(id))
+          router.push(`/`)
+        }}
       >
         {name}
       </button>

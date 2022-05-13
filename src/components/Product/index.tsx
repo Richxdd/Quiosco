@@ -3,7 +3,7 @@ import React from 'react'
 import { formatMoney } from '../../helpers'
 import { useAppDispatch } from '../../hooks/reduxhooks'
 import { Product } from '../../interfaces/category'
-import { clickModal, fillProduct } from '../../store/slices/modalslice'
+import { clickModal, fillProduct } from '../../store/slices/quioscoslice'
 
 const Product = ({ name, image, price, id, categoryId }: Product) => {
   const dispatch = useAppDispatch()

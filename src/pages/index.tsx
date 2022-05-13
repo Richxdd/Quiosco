@@ -1,24 +1,11 @@
-import { useEffect } from 'react'
 import Product from '../components/Product'
-import { useAppDispatch, useAppSelector } from '../hooks/reduxhooks'
+import { useAppSelector } from '../hooks/reduxhooks'
 import Layout from '../layout/Layout'
-import { clickCategory, getCategory } from '../store/slices/categoryslice'
 interface Props {
   categorys: {}[]
 }
 const Home = () => {
-  const dispatch = useAppDispatch()
-  const { category, selectedCategory } = useAppSelector(
-    (state) => state.category
-  )
-
-  useEffect(() => {
-    dispatch(getCategory())
-  }, [dispatch])
-
-  useEffect(() => {
-    dispatch(clickCategory(category[0]?.id))
-  }, [category])
+  const { selectedCategory } = useAppSelector((state) => state.category)
 
   return (
     <Layout pagina={`Menú ${selectedCategory?.name}`}>

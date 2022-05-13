@@ -3,13 +3,12 @@ import React, { useEffect, useState } from 'react'
 import { formatMoney } from '../../helpers'
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxhooks'
 import { useCounter } from '../../hooks/useCounter'
-import { clickModal } from '../../store/slices/modalslice'
-import { addOrder } from '../../store/slices/orderslice'
+import { addOrder, clickModal } from '../../store/slices/quioscoslice'
 
 const ModalPoduct = () => {
   const dispatch = useAppDispatch()
-  const { product } = useAppSelector((state) => state.modal)
-  const { orders } = useAppSelector((state) => state.orders)
+  const { product } = useAppSelector((state) => state.quiosco)
+  const { orders } = useAppSelector((state) => state.quiosco)
   const { counter, increment, decrement, addCounter } = useCounter(1)
   const [amountEdit, setAmountEdit] = useState(false)
 

@@ -1,14 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-
 import categoryReducer from './slices/categoryslice'
-import modalReducer from './slices/modalslice'
-import orderReducer from './slices/orderslice'
+import quioscoReducer from './slices/quioscoslice'
 
 export const store = configureStore({
   reducer: {
     category: categoryReducer,
-    modal: modalReducer,
-    orders: orderReducer
+    quiosco: quioscoReducer
   }
 })
 
