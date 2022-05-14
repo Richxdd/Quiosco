@@ -11,7 +11,7 @@ CREATE TABLE `Product` (
 
 -- CreateTable
 CREATE TABLE `Category` (
-    `id` INTEGER NOT NULL,
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(191) NOT NULL,
     `icon` VARCHAR(191) NOT NULL,
 
