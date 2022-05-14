@@ -1,7 +1,7 @@
 import React from 'react'
-import ResumeProduct from '../../components/ResumeProduct'
-import { useAppSelector } from '../../hooks/reduxhooks'
-import Layout from '../../layout/Layout'
+import ResumeProduct from '../components/ResumeProduct'
+import { useAppSelector } from '../hooks/reduxhooks'
+import Layout from '../layout/Layout'
 
 const Resume = () => {
   const { orders } = useAppSelector((state) => state.quiosco)

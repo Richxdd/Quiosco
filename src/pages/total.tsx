@@ -3,15 +3,11 @@ import { route } from 'next/dist/server/router'
 import { useRouter } from 'next/router'
 import React, { ChangeEvent, useEffect, useCallback } from 'react'
 import { toast } from 'react-toastify'
-import { formatMoney } from '../../helpers'
-import { useAppDispatch, useAppSelector } from '../../hooks/reduxhooks'
-import Layout from '../../layout/Layout'
-import { resetCategory } from '../../store/slices/categoryslice'
-import {
-  changeName,
-  changeTotal,
-  resetApp
-} from '../../store/slices/quioscoslice'
+import { formatMoney } from '../helpers'
+import { useAppDispatch, useAppSelector } from '../hooks/reduxhooks'
+import Layout from '../layout/Layout'
+import { resetCategory } from '../store/slices/categoryslice'
+import { changeName, changeTotal, resetApp } from '../store/slices/quioscoslice'
 
 const Total = () => {
   const { orders, name, total } = useAppSelector((state) => state.quiosco)
