@@ -24,10 +24,14 @@ const categorySlice = createSlice({
         (category) => category.id === action.payload
       )
       state.selectedCategory = category[0]
+    },
+    resetCategory: (state) => {
+      state.selectedCategory = state.category[0]
     }
   }
 })
-export const { fillCategory, clickCategory } = categorySlice.actions
+export const { fillCategory, clickCategory, resetCategory } =
+  categorySlice.actions
 export default categorySlice.reducer
 
 export const getCategory = () => (dispatch: any) => {

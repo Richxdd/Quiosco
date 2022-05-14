@@ -1,18 +1,46 @@
+import axios from 'axios'
+import { route } from 'next/dist/server/router'
+import { useRouter } from 'next/router'
 import React, { ChangeEvent, useEffect, useCallback } from 'react'
+import { toast } from 'react-toastify'
 import { formatMoney } from '../../helpers'
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxhooks'
 import Layout from '../../layout/Layout'
-import { changeName, changeTotal } from '../../store/slices/quioscoslice'
+import { resetCategory } from '../../store/slices/categoryslice'
+import {
+  changeName,
+  changeTotal,
+  resetApp
+} from '../../store/slices/quioscoslice'
 
 const Total = () => {
   const { orders, name, total } = useAppSelector((state) => state.quiosco)
   const dispatch = useAppDispatch()
+  const router = useRouter()
   const checkOrder = useCallback(() => {
     return orders.length === 0 || name === '' || name.length < 3
   }, [orders, name])
 
   const generateOrder = async (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
+    try {
+      await axios.post('/api/orders', {
+        order: orders,
+        name,
+        total,
+        date: Date.now().toString()
+      })
+      //Reset app
+      dispatch(resetApp())
+      dispatch(resetCategory())
+      toast.success('Pedido realizado con éxito')
+
+      setTimeout(() => {
+        router.push('/')
+      }, 3000)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   useEffect(() => {
@@ -53,13 +81,13 @@ const Total = () => {
         <div className='mt-10'>
           <input
             value='Confirmar Pedido'
-            type='button'
+            type='submit'
             disabled={checkOrder()}
             className={`${
               checkOrder()
                 ? 'bg-indigo-100'
-                : 'bg-indigo-600 hover:bg-indigo-800'
-            }  w-full lg:w-auto px-5 py-2 rounded uppercase font-bold text-white text-center`}
+                : 'bg-indigo-600 hover:bg-indigo-800 cursor-pointer'
+            }  w-full lg:w-auto px-5 py-2 rounded uppercase font-bold text-white text-center `}
           />
         </div>
       </form>

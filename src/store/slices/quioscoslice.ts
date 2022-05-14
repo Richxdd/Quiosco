@@ -53,6 +53,13 @@ const quioscoSlice = createSlice({
     },
     changeTotal: (state, { payload: total }) => {
       state.total = total
+    },
+    resetApp: (state) => {
+      state.orders = initialState.orders
+      state.product = initialState.product
+      state.name = initialState.name
+      state.modal = initialState.modal
+      state.total = initialState.total
     }
   }
 })
@@ -63,6 +70,7 @@ export const {
   editOrder,
   deleteOrder,
   changeName,
-  changeTotal
+  changeTotal,
+  resetApp
 } = quioscoSlice.actions
 export default quioscoSlice.reducer
