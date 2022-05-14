@@ -1,8 +1,5 @@
 const categorys = [
-  {
-    icon: 'cafe',
-    name: 'Café'
-  },
+  { icon: 'cafe', name: 'Café' },
   { icon: 'hamburguesa', name: 'Hamburguesas' },
   { icon: 'pizza', name: 'Pizzas' },
   { icon: 'dona', name: 'Donas' },
